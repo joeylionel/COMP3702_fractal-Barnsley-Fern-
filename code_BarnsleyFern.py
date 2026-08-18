@@ -67,12 +67,19 @@ ax = fig.add_subplot(111)
 ax.set_facecolor("white")
 
 # 2. Use the reversed colormap 'YlGn_r' (Dark Green -> Light Grass Green)
+from matplotlib.colors import LinearSegmentedColormap
+
+my_cmap = LinearSegmentedColormap.from_list(
+    "my_gradient",
+    ["#006600", "#80D12F", "#76EE30"]
+)
+
 plt.scatter(
     pts_np[:, 0],
     pts_np[:, 1],
     s=0.05,
-    c=pts_np[:, 1],  # Colors based on height (y-coordinate)
-    cmap="YlGn_r",  # '_r' reverses the gradient
+    c=pts_np[:, 1],
+    cmap=my_cmap,
     edgecolors="none",
 )
 
